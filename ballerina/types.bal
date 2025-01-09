@@ -127,13 +127,13 @@ public type ObjectTypePropertyCreate record {
 };
 
 public type PropertyModificationMetadata record {
-    # 
+    #
     boolean readOnlyOptions?;
-    # 
+    #
     boolean readOnlyValue;
-    # 
+    #
     boolean readOnlyDefinition;
-    # 
+    #
     boolean archivable;
 };
 
@@ -284,7 +284,7 @@ public type Property record {
     boolean calculated?;
     # For default properties, true indicates that the options are stored externally to the property settings.
     boolean externalOptions?;
-    # 
+    #
     string updatedAt?;
     # The internal ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.
     string createdUserId?;
