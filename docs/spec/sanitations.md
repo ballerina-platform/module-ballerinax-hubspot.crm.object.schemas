@@ -6,7 +6,7 @@ _Edition_: Swan Lake
 # Sanitation for OpenAPI specification
 
 This document records the sanitation done on top of the official OpenAPI specification from HubSpot CRM Object Tickets. 
-The OpenAPI specification is obtained from [Tickets OpenAPI](https://github.com/HubSpot/HubSpot-public-api-spec-collection/blob/main/PublicApiSpecs/CRM/Tickets/Rollouts/424/v3/schemas.json).
+The OpenAPI specification is obtained from [Tickets OpenAPI](https://github.com/HubSpot/HubSpot-public-api-spec-collection/blob/main/PublicApiSpecs/CRM/Schemas/Rollouts/145900/v3/schemas.json).
 
 These changes are done in order to improve the overall usability, and as workarounds for some known language limitations.
 
