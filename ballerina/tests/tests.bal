@@ -46,9 +46,6 @@ final Client hpClient = check new Client(config);
 isolated function testGetSchemas() returns error? {
     // Make GET request to fetch schemas
     CollectionResponseObjectSchemaNoPaging response = check hpClient->/.get();
-
-    // Assert that the response is of type CollectionResponseObjectSchemaNoPaging
-    test:assertTrue(response is CollectionResponseObjectSchemaNoPaging, "Expected response to be of type CollectionResponseObjectSchemaNoPaging");
 }
 
 // Test: Create Schema - Creates a new schema
@@ -75,8 +72,6 @@ isolated function testCreateSchema() returns error? {
     // Make POST request to create the schema
     ObjectSchema response = check hpClient->/.post(payload);
 
-    // Assert that the response is of type ObjectSchema
-    test:assertTrue(response is ObjectSchema, "Expected response to be of type ObjectSchema");
 }
 
 // Test: Delete Schema - Deletes a specific schema by its ID
@@ -90,8 +85,6 @@ isolated function testDeleteSchema() returns error? {
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId].delete();
 
-    // Assert that the response is of type http:Response
-    test:assertTrue(response is http:Response, "Expected response to be of type http:Response");
 }
 
 // Test: Update Schema - Updates an existing schema by ID
@@ -121,9 +114,6 @@ isolated function testPatchSchema() returns error? {
 
     // Make PATCH request to update the schema
     ObjectTypeDefinition response = check hpClient->/[objId].patch(payload);
-
-    // Assert that the response is of type ObjectTypeDefinition
-    test:assertTrue(response is ObjectTypeDefinition, "Expected response to be of type ObjectTypeDefinition");
 }
 
 // Test: Create Schema - Creates a new schema
@@ -145,8 +135,6 @@ isolated function testCreateAssosiation() returns error? {
     // Make POST request to create the schema
     AssociationDefinition response = check hpClient->/[objId]/associations.post(payload);
 
-    // Assert that the response is of type ObjectSchema
-    test:assertTrue(response is ObjectSchema, "Expected response to be of type ObjectSchema");
 }
 
 // Test: Delete Schema - Deletes a specific assosiation by its ID
@@ -161,7 +149,5 @@ isolated function testDeleteAssosiation() returns error? {
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId]/associations/[assId].delete();
 
-    // Assert that the response is of type http:Response
-    test:assertTrue(response is http:Response, "Expected response to be of type http:Response");
 }
 
