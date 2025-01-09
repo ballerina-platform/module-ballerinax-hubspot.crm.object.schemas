@@ -55,17 +55,17 @@ isolated function testGetSchemas() returns error? {
 isolated function testCreateSchema() returns error? {
     // Define the payload for creating a new object schema
     ObjectSchemaEgg payload = {
-        "secondaryDisplayProperties": ["string"],
-        "requiredProperties": ["my_object_property"],
-        "searchableProperties": ["string"],
-        "primaryDisplayProperty": "my_object_property",
-        "name": "my_object",
-        "description": "string",
-        "associatedObjects": ["CONTACT"],
-        "properties": [],
-        "labels": {
-            "plural": "My objects",
-            "singular": "My object"
+        secondaryDisplayProperties: ["string"],
+        requiredProperties: ["my_object_property"],
+        searchableProperties: ["string"],
+        primaryDisplayProperty: "my_object_property",
+        name: "my_object",
+        description: "string",
+        associatedObjects: ["CONTACT"],
+        properties: [],
+        labels: {
+            plural: "My objects",
+            singular: "My object"
         }
     };
 
@@ -95,17 +95,14 @@ isolated function testDeleteSchema() returns error? {
 isolated function testPatchSchema() returns error? {
     // Define the payload for updating an object schema
     ObjectTypeDefinitionPatch payload = {
-        "secondaryDisplayProperties": ["string"],
-        "requiredProperties": ["my_object_property"],
-        "searchableProperties": ["string"],
-        "primaryDisplayProperty": "my_object_property",
-        "name": "my_object",
-        "description": "string",
-        "associatedObjects": ["CONTACT"],
-        "properties": [],
-        "labels": {
-            "plural": "My objects",
-            "singular": "My object"
+        secondaryDisplayProperties: ["string"],
+        requiredProperties: ["my_object_property"],
+        searchableProperties: ["string"],
+        primaryDisplayProperty: "my_object_property",
+        description: "string",
+        labels: {
+            plural: "My objects",
+            singular: "My object"
         }
     };
 
@@ -127,9 +124,9 @@ isolated function testCreateAssosiation() returns error? {
 
     // Define the payload for creating a new object schema
     AssociationDefinitionEgg payload = {
-        "fromObjectTypeId": "2-123456",
-        "name": "my_object_to_contact",
-        "toObjectTypeId": "contact"
+        fromObjectTypeId: "2-123456",
+        name: "my_object_to_contact",
+        toObjectTypeId: "contact"
     };
 
     // Make POST request to create the schema
