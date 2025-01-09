@@ -37,7 +37,7 @@ ConnectionConfig config = {
 };
 
 // HubSpot CRM Client for interacting with HubSpot's Object Schemas API
-final Client hpClient = check new Client(config, "https://api.hubapi.com/crm-object-schemas/v3/schemas");
+final Client hpClient = check new Client(config);
 
 // Test: Get Schema - Fetches a list of object schemas
 @test:Config {
