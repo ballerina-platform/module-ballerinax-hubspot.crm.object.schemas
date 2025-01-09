@@ -1,0 +1,1 @@
+# Ballerina HubSpot CRM Object Schemas connector

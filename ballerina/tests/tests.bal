@@ -30,10 +30,10 @@ OAuth2RefreshTokenGrantConfig auth = {
 };
 
 // Global Client configuration for HTTP communication
-ConnectionConfig config = { 
-    httpVersion: http:HTTP_2_0, 
-    timeout: 60, 
-    auth: auth 
+ConnectionConfig config = {
+    httpVersion: http:HTTP_2_0,
+    timeout: 60,
+    auth: auth
 };
 
 // HubSpot CRM Client for interacting with HubSpot's Object Schemas API
@@ -99,7 +99,6 @@ isolated function testDeleteSchema() returns error? {
     groups: ["live_tests", "mock_tests"]
 }
 
-
 isolated function testPatchSchema() returns error? {
     // Define the payload for updating an object schema
     ObjectTypeDefinitionPatch payload = {
@@ -127,7 +126,6 @@ isolated function testPatchSchema() returns error? {
     test:assertTrue(response is ObjectTypeDefinition, "Expected response to be of type ObjectTypeDefinition");
 }
 
-
 // Test: Create Schema - Creates a new schema
 @test:Config {
     groups: ["live_tests", "mock_tests"]
@@ -151,7 +149,6 @@ isolated function testCreateAssosiation() returns error? {
     test:assertTrue(response is ObjectSchema, "Expected response to be of type ObjectSchema");
 }
 
-
 // Test: Delete Schema - Deletes a specific assosiation by its ID
 @test:Config {
     groups: ["live_tests", "mock_tests"]
@@ -159,10 +156,10 @@ isolated function testCreateAssosiation() returns error? {
 isolated function testDeleteAssosiation() returns error? {
     // Define the object schema ID to delete
     string objId = "testid";
-    string AssId = "testid";
+    string assId = "testid";
 
     // Make DELETE request to delete the schema
-    http:Response response = check hpClient->/[objId]/associations/[AssId].delete();
+    http:Response response = check hpClient->/[objId]/associations/[assId].delete();
 
     // Assert that the response is of type http:Response
     test:assertTrue(response is http:Response, "Expected response to be of type http:Response");
