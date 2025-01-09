@@ -12,9 +12,6 @@ const string TOKEN_URL = "https://api.hubapi.com/oauth/v1/token";
 
 string? accessToken = null;
 
-Client? hubSpotClient = null;
-
-
 // Define OAuth2Config record to hold details
 type OAuth2Config record {
     string clientId;
@@ -55,19 +52,6 @@ service / on new http:Listener(9090) {
 
             // Get the access token by exchanging the authorization code
             accessToken = check getAccessToken(oauth2Config);
-
-            // if(accessToken is string){
-
-            //     http:BearerTokenConfig tokenConfig =  {"token": accessToken};
-
-            //     // Set up the configuration for OAuth2 using BearerTokenConfig
-            //     ConnectionConfig config = {
-            //         "auth": tokenConfig
-            //     };
-
-            //     hubSpotClient = check  new(config);
-            // }
-
 
             // Respond with the access token or any other message
             check caller->respond("Access granted successfully.");
