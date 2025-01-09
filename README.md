@@ -52,8 +52,6 @@ App Developer Accounts, allow you to create developer test accounts to test apps
    * `schemas`
    * `oath`
 
-   ![Scope Selection](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/main/docs/setup/resources/scope_select.png)
-
 3. Add your Redirect URI in the relevant section. You can use `localhost` addresses for local development purposes. Then Click "Create App".
 
    ![Redirect URI](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/main/docs/setup/resources/redirect_url.png)
