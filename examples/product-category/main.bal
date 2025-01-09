@@ -68,7 +68,6 @@ public function main() returns error? {
         associatedObjects: []
     };
 
-
     // Creating the "Product" schema in HubSpot
     schemas:ObjectTypeDefinition productSchemaResponse = check hubSpotClient->/[objId].patch(productSchemaPayload);
 
