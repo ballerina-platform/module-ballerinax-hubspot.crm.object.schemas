@@ -1,6 +1,6 @@
 [package]
 org = "thilan"
-name = "eventmanagement"
+name = "productupdate"
 version = "0.1.0"
 distribution = "2201.10.3"
 

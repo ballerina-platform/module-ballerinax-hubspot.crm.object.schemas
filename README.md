@@ -151,24 +151,17 @@ import ballerina/oauth2;
       credentialBearer: oauth2:POST_BODY_BEARER 
    };
 
-   final Client HubSpotClient = check new ({auth});
+   final Client hpClient = check new ({auth});
    ```
 
 Now, utilize the available connector operations. A sample use case is shown below.
 
-#### Create a New Schema
+#### Get all schemas
 
 ```ballerina
 public function main() returns error? {
-    hsschemas:SimplePublicObjectInputForCreate payload = {
-        properties: {
-            "hs_pipeline": "0",
-            "hs_pipeline_stage": "1",
-            "hs_ticket_priority": "HIGH",
-            "subject": "New troubleshoot report"
-        }
-    };
-    hsschemas:SimplePublicObject response = check HubSpotClient->/crm/v3/objects/schemas.post(payload);
+    CollectionResponseObjectSchemaNoPaging response = check hpClient->/.get();
+
     io:println(response);
 }
 
@@ -177,8 +170,8 @@ public function main() returns error? {
 ## Examples
 
 The `HubSpot CRM Object Schemas` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.schemas/tree/main/examples), covering the following use cases:
-   1. [Ticket Management System](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/ticket-management-system)
-   2. [Weekly Tickets Report Generation](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/weekly-ticket-reports)
+   1. [Auther and Book assosiation](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/book-author)
+   2. [Product spec update](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/product-update)
 
 ## Build from the source
 
