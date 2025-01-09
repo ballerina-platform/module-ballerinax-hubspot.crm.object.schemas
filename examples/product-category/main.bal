@@ -23,6 +23,7 @@ import ballerinax/hubspot.crm.obj.schemas as schemas;
 configurable string clientId = ?;
 configurable string clientSecret = ?;
 configurable string refreshToken = ?;
+const string objId = "test123";
 
 // Entry point of the program
 public function main() returns error? {
@@ -45,8 +46,12 @@ public function main() returns error? {
     // Initializing the HubSpot CRM Client with the configuration
     final schemas:Client hubSpotClient = check new Client(clientConfig);
 
+
+    schemas:ObjectSchema productSearchResponse = check hubSpotClient->/[objId].get();
+
+
     // Define the schema for "Product" with its properties and labels
-    schemas:ObjectSchemaEgg productSchemaPayload = {
+    schemas:ObjectTypeDefinitionPatch productSchemaPayload = {
         name: "product",
         labels: {
             singular: "Product",
@@ -63,12 +68,8 @@ public function main() returns error? {
         associatedObjects: []
     };
 
+
     // Creating the "Product" schema in HubSpot
-    schemas:ObjectSchema productSchemaResponse = check hubSpotClient->/.post(productSchemaPayload);
-
-    // Retrieve the object type IDs for both schemas
-    string? productSchemaId = productSchemaResponse.objectTypeId;
-
-    // Adding a new property to the product schema.
+    schemas:ObjectTypeDefinition productSchemaResponse = check hubSpotClient->/[objId].patch(productSchemaPayload);
 
 }

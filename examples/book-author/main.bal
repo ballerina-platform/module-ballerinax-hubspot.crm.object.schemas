@@ -46,24 +46,24 @@ public function main() returns error? {
     final schemas:Client hubSpotClient = check new Client(clientConfig);
 
     // Define the schema for "Author" with its properties and labels
-    schemas:ObjectSchemaEgg autherSchemaPayload = {
-        name: "auther",
+    schemas:ObjectSchemaEgg authorSchemaPayload = {
+        name: "author",
         labels: {
             singular: "Author",
             plural: "Authors"
         },
-        primaryDisplayProperty: "auther_name",
-        requiredProperties: ["auther_name", "auther_id"],
+        primaryDisplayProperty: "author_name",
+        requiredProperties: ["author_name", "author_id"],
         properties: [
-            {"name": "auther_id", "label": "Author ID", "type": "string", "fieldType": "text"},
-            {"name": "auther_name", "label": "Author Name", "type": "string", "fieldType": "text"},
+            {"name": "author_id", "label": "Author ID", "type": "string", "fieldType": "text"},
+            {"name": "author_name", "label": "Author Name", "type": "string", "fieldType": "text"},
             {"name": "location", "label": "Location", "type": "string", "fieldType": "text"}
         ],
         associatedObjects: []
     };
 
     // Creating the "Author" schema in HubSpot
-    schemas:ObjectSchema autherSchemaResponse = check hubSpotClient->/.post(autherSchemaPayload);
+    schemas:ObjectSchema authorSchemaResponse = check hubSpotClient->/.post(authorSchemaPayload);
 
     // Define the schema for "Book" with its properties and labels
     schemas:ObjectSchemaEgg bookSchemaPayload = {
@@ -86,18 +86,18 @@ public function main() returns error? {
 
     // Retrieve the object type IDs for both schemas
     string? bookSchemaId = bookSchemaResponse.objectTypeId;
-    string? autherSchemaId = autherSchemaResponse.objectTypeId;
+    string? authorSchemaId = authorSchemaResponse.objectTypeId;
 
     // Check if the schema creation was successful
-    if bookSchemaId is null || autherSchemaId is null {
+    if bookSchemaId is null || authorSchemaId is null {
         return error("Failed to create schemas!");
     }
 
     // Define the association between "Book" and "Author"
     schemas:AssociationDefinitionEgg payload = {
         "fromObjectTypeId": bookSchemaId,
-        "name": "book_to_auther",
-        "toObjectTypeId": autherSchemaId
+        "name": "book_to_author",
+        "toObjectTypeId": authorSchemaId
     };
 
     // Create the association in HubSpot
