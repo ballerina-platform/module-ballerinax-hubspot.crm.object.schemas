@@ -46,6 +46,7 @@ final Client hpClient = check new Client(config);
 isolated function testGetSchemas() returns error? {
     // Make GET request to fetch schemas
     CollectionResponseObjectSchemaNoPaging response = check hpClient->/.get();
+    test:assertNotEquals(response.results, ());
 }
 
 // Test: Create Schema - Creates a new schema
@@ -71,6 +72,8 @@ isolated function testCreateSchema() returns error? {
 
     // Make POST request to create the schema
     ObjectSchema response = check hpClient->/.post(payload);
+    test:assertNotEquals(response.associations, ());
+
 
 }
 
@@ -84,6 +87,7 @@ isolated function testDeleteSchema() returns error? {
 
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId].delete();
+    test:assertEquals(response.statusCode, 204);
 
 }
 
@@ -111,6 +115,8 @@ isolated function testPatchSchema() returns error? {
 
     // Make PATCH request to update the schema
     ObjectTypeDefinition response = check hpClient->/[objId].patch(payload);
+    test:assertNotEquals(response.updatedAt, ());
+
 }
 
 // Test: Create Schema - Creates a new schema
@@ -131,6 +137,8 @@ isolated function testCreateAssosiation() returns error? {
 
     // Make POST request to create the schema
     AssociationDefinition response = check hpClient->/[objId]/associations.post(payload);
+    test:assertNotEquals(response.id, ());
+
 
 }
 
@@ -145,6 +153,8 @@ isolated function testDeleteAssosiation() returns error? {
 
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId]/associations/[assId].delete();
+    test:assertEquals(response.statusCode, 204);
+
 
 }
 
