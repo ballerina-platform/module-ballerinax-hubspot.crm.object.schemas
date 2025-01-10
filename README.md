@@ -121,8 +121,8 @@ To use the `HubSpot CRM Object Schemas` connector in your Ballerina application,
 Import the `hubspot.crm.obj.schemas` module and `oauth2` module.
 
 ```ballerina
-import ballerinax/hubspot.crm.obj.schemas as schemas;
 import ballerina/oauth2;
+import ballerinax/hubspot.crm.obj.schemas as schemas;
 ```
 
 ### Step 2: Instantiate a new connector

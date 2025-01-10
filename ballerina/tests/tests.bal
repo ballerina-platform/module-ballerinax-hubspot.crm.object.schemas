@@ -18,15 +18,19 @@ import ballerina/http;
 import ballerina/oauth2;
 import ballerina/test;
 
+configurable boolean isLive = false;
 configurable string clientId = ?;
 configurable string clientSecret = ?;
 configurable string refreshToken = ?;
+
+string api_uri = isLive ? "" : "http://127.0.0.1:3000";
 
 OAuth2RefreshTokenGrantConfig auth = {
     clientId,
     clientSecret,
     refreshToken,
-    credentialBearer: oauth2:POST_BODY_BEARER
+    credentialBearer: oauth2:POST_BODY_BEARER,
+    refreshUrl: isLive ? "https://api.hubapi.com/oauth/v1/token" : "http://127.0.0.1:3000/token"
 };
 
 // Global Client configuration for HTTP communication
@@ -37,7 +41,7 @@ ConnectionConfig config = {
 };
 
 // HubSpot CRM Client for interacting with HubSpot's Object Schemas API
-final Client hpClient = check new Client(config);
+final Client hpClient = check new Client(config, api_uri);
 
 // Test: Get Schema - Fetches a list of object schemas
 @test:Config {
@@ -73,8 +77,6 @@ isolated function testCreateSchema() returns error? {
     // Make POST request to create the schema
     ObjectSchema response = check hpClient->/.post(payload);
     test:assertNotEquals(response.associations, ());
-
-
 }
 
 // Test: Delete Schema - Deletes a specific schema by its ID
@@ -88,7 +90,6 @@ isolated function testDeleteSchema() returns error? {
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId].delete();
     test:assertEquals(response.statusCode, 204);
-
 }
 
 // Test: Update Schema - Updates an existing schema by ID
@@ -119,7 +120,7 @@ isolated function testPatchSchema() returns error? {
 
 }
 
-// Test: Create Schema - Creates a new schema
+// Test: Create Schema - Creates a new assosiation
 @test:Config {
     groups: ["live_tests", "mock_tests"]
 }
@@ -138,11 +139,9 @@ isolated function testCreateAssosiation() returns error? {
     // Make POST request to create the schema
     AssociationDefinition response = check hpClient->/[objId]/associations.post(payload);
     test:assertNotEquals(response.id, ());
-
-
 }
 
-// Test: Delete Schema - Deletes a specific assosiation by its ID
+// Test: Delete assosiation - Deletes a specific assosiation by its ID
 @test:Config {
     groups: ["live_tests", "mock_tests"]
 }
@@ -154,7 +153,5 @@ isolated function testDeleteAssosiation() returns error? {
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId]/associations/[assId].delete();
     test:assertEquals(response.statusCode, 204);
-
-
 }
 
