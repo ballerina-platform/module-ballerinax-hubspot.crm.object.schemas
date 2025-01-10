@@ -77,7 +77,6 @@ isolated function testCreateSchema() returns error? {
     // Make POST request to create the schema
     ObjectSchema response = check hpClient->/.post(payload);
     test:assertNotEquals(response.associations, ());
-
 }
 
 // Test: Delete Schema - Deletes a specific schema by its ID
@@ -154,6 +153,5 @@ isolated function testDeleteAssosiation() returns error? {
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId]/associations/[assId].delete();
     test:assertEquals(response.statusCode, 204);
-
 }
 
