@@ -46,6 +46,7 @@ final Client hpClient = check new Client(config);
 isolated function testGetSchemas() returns error? {
     // Make GET request to fetch schemas
     CollectionResponseObjectSchemaNoPaging response = check hpClient->/.get();
+    test:assertNotEquals(response.results, ());
 }
 
 // Test: Create Schema - Creates a new schema
@@ -55,22 +56,24 @@ isolated function testGetSchemas() returns error? {
 isolated function testCreateSchema() returns error? {
     // Define the payload for creating a new object schema
     ObjectSchemaEgg payload = {
-        "secondaryDisplayProperties": ["string"],
-        "requiredProperties": ["my_object_property"],
-        "searchableProperties": ["string"],
-        "primaryDisplayProperty": "my_object_property",
-        "name": "my_object",
-        "description": "string",
-        "associatedObjects": ["CONTACT"],
-        "properties": [],
-        "labels": {
-            "plural": "My objects",
-            "singular": "My object"
+        secondaryDisplayProperties: ["string"],
+        requiredProperties: ["my_object_property"],
+        searchableProperties: ["string"],
+        primaryDisplayProperty: "my_object_property",
+        name: "my_object",
+        description: "string",
+        associatedObjects: ["CONTACT"],
+        properties: [],
+        labels: {
+            plural: "My objects",
+            singular: "My object"
         }
     };
 
     // Make POST request to create the schema
     ObjectSchema response = check hpClient->/.post(payload);
+    test:assertNotEquals(response.associations, ());
+
 
 }
 
@@ -84,6 +87,7 @@ isolated function testDeleteSchema() returns error? {
 
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId].delete();
+    test:assertEquals(response.statusCode, 204);
 
 }
 
@@ -95,17 +99,14 @@ isolated function testDeleteSchema() returns error? {
 isolated function testPatchSchema() returns error? {
     // Define the payload for updating an object schema
     ObjectTypeDefinitionPatch payload = {
-        "secondaryDisplayProperties": ["string"],
-        "requiredProperties": ["my_object_property"],
-        "searchableProperties": ["string"],
-        "primaryDisplayProperty": "my_object_property",
-        "name": "my_object",
-        "description": "string",
-        "associatedObjects": ["CONTACT"],
-        "properties": [],
-        "labels": {
-            "plural": "My objects",
-            "singular": "My object"
+        secondaryDisplayProperties: ["string"],
+        requiredProperties: ["my_object_property"],
+        searchableProperties: ["string"],
+        primaryDisplayProperty: "my_object_property",
+        description: "string",
+        labels: {
+            plural: "My objects",
+            singular: "My object"
         }
     };
 
@@ -114,6 +115,8 @@ isolated function testPatchSchema() returns error? {
 
     // Make PATCH request to update the schema
     ObjectTypeDefinition response = check hpClient->/[objId].patch(payload);
+    test:assertNotEquals(response.updatedAt, ());
+
 }
 
 // Test: Create Schema - Creates a new schema
@@ -127,13 +130,15 @@ isolated function testCreateAssosiation() returns error? {
 
     // Define the payload for creating a new object schema
     AssociationDefinitionEgg payload = {
-        "fromObjectTypeId": "2-123456",
-        "name": "my_object_to_contact",
-        "toObjectTypeId": "contact"
+        fromObjectTypeId: "2-123456",
+        name: "my_object_to_contact",
+        toObjectTypeId: "contact"
     };
 
     // Make POST request to create the schema
     AssociationDefinition response = check hpClient->/[objId]/associations.post(payload);
+    test:assertNotEquals(response.id, ());
+
 
 }
 
@@ -148,6 +153,8 @@ isolated function testDeleteAssosiation() returns error? {
 
     // Make DELETE request to delete the schema
     http:Response response = check hpClient->/[objId]/associations/[assId].delete();
+    test:assertEquals(response.statusCode, 204);
+
 
 }
 

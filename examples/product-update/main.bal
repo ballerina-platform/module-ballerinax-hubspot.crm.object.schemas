@@ -46,9 +46,7 @@ public function main() returns error? {
     // Initializing the HubSpot CRM Client with the configuration
     final schemas:Client hubSpotClient = check new Client(clientConfig);
 
-
     schemas:ObjectSchema productSearchResponse = check hubSpotClient->/[objId].get();
-
 
     // Define the schema for "Product" with its properties and labels
     schemas:ObjectTypeDefinitionPatch productSchemaPayload = {
