@@ -55,9 +55,9 @@ public function main() returns error? {
         primaryDisplayProperty: "author_name",
         requiredProperties: ["author_name", "author_id"],
         properties: [
-            {"name": "author_id", "label": "Author ID", "type": "string", "fieldType": "text"},
-            {"name": "author_name", "label": "Author Name", "type": "string", "fieldType": "text"},
-            {"name": "location", "label": "Location", "type": "string", "fieldType": "text"}
+            {name: "author_id", label: "Author ID", "type": "string", fieldType: "text"},
+            {name: "author_name", label: "Author Name", "type": "string", fieldType: "text"},
+            {name: "location", label: "Location", "type": "string", fieldType: "text"}
         ],
         associatedObjects: []
     };
@@ -75,8 +75,8 @@ public function main() returns error? {
         primaryDisplayProperty: "book_name",
         requiredProperties: ["book_name", "book_date"],
         properties: [
-            {"name": "book_name", "label": "Book Name", "type": "string", "fieldType": "text"},
-            {"name": "published_date", "label": "Published Date", "type": "datetime", "fieldType": "date"}
+            {name: "book_name", label: "Book Name", "type": "string", fieldType: "text"},
+            {name: "published_date", label: "Published Date", 'type: "datetime", fieldType: "date"}
         ],
         associatedObjects: []
     };
@@ -95,9 +95,9 @@ public function main() returns error? {
 
     // Define the association between "Book" and "Author"
     schemas:AssociationDefinitionEgg payload = {
-        "fromObjectTypeId": bookSchemaId,
-        "name": "book_to_author",
-        "toObjectTypeId": authorSchemaId
+        fromObjectTypeId: bookSchemaId,
+        name: "book_to_author",
+        toObjectTypeId: authorSchemaId
     };
 
     // Create the association in HubSpot
