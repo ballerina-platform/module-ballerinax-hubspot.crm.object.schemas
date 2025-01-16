@@ -14,16 +14,15 @@ These changes are done in order to improve the overall usability, and as workaro
 
 2. **Change the url property of the servers object:**
 
-    * Original: https://api.hubapi.com <br>
-    * Updated: https://api.hubapi.com/crm/v3/objects/schemas
-
-    * Reason: This change is made to ensure that all API paths are relative to the versioned base URL (crm/v3/objects/taxes), which improves the consistency and usability of the APIs.
+    - **Original**: https://api.hubapi.com <br>
+    - **Updated**: https://api.hubapi.com/crm/v3/objects/schemas
+    - **Reason**: This change is made to ensure that all API paths are relative to the versioned base URL (crm/v3/objects/taxes), which improves the consistency and usability of the APIs.
 
 3. **Update API Paths:**
 
-    * Original: `/crm/v3/objects/schemas`
-    * Updated: `/`
-    * Reason: This modification simplifies the API paths, making them shorter and more readable. It also centralizes the versioning to the base URL, which is a common best practice. 
+    - **Original**: `/crm/v3/objects/schemas`
+    - **Updated**: `/`
+    - **Reason**: This modification simplifies the API paths, making them shorter and more readable. It also centralizes the versioning to the base URL, which is a common best practice. 
 
 ## OpenAPI cli command
 
