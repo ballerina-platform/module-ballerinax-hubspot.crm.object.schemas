@@ -25,6 +25,7 @@ configurable string refreshToken = ?;
 
 string api_uri = isLive ? "" : "http://127.0.0.1:3000";
 
+
 OAuth2RefreshTokenGrantConfig auth = {
     clientId,
     clientSecret,
@@ -154,4 +155,3 @@ isolated function testDeleteAssosiation() returns error? {
     http:Response response = check hpClient->/[objId]/associations/[assId].delete();
     test:assertEquals(response.statusCode, 204);
 }
-

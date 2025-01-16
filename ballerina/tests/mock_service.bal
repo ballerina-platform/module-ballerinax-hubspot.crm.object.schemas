@@ -15,8 +15,11 @@
 // under the License.
 
 import ballerina/http;
+import ballerina/log;
 
-service / on new http:Listener(3000) {
+listener http:Listener httpListener = new (3000);
+
+http:Service mockService = service object {
 
     resource function post token() returns json {
         return {
@@ -314,4 +317,14 @@ service / on new http:Listener(3000) {
         return http:NO_CONTENT;
     }
 
+};
+
+function init() returns error? {
+    // if isLiveServer {
+    //     log:printInfo("Skiping mock server initialization as the tests are running on live server");
+    //     return;
+    // }
+    io:("Initiating mock server");
+    check httpListener.attach(mockService, "/");
+    check httpListener.'start();
 }
