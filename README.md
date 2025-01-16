@@ -163,7 +163,6 @@ public function main() returns error? {
 }
 
 ```
-
 ## Examples
 
 The `HubSpot CRM Object Schemas` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.schemas/tree/main/examples), covering the following use cases:

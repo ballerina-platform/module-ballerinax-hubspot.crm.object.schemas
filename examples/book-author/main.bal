@@ -103,4 +103,3 @@ public function main() returns error? {
     // Create the association in HubSpot
     schemas:AssociationDefinition response = check hubSpotClient->/book/associations.post(payload);
 }
-
