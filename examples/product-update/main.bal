@@ -68,5 +68,6 @@ public function main() returns error? {
 
     // Creating the "Product" schema in HubSpot
     schemas:ObjectTypeDefinition productSchemaResponse = check hubSpotClient->/[objId].patch(productSchemaPayload);
+    io:print(productSchemaResponse.name );
 
 }
