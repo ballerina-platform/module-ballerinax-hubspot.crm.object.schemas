@@ -45,7 +45,7 @@ ConnectionConfig config = {
 
 
 // HubSpot CRM Client for interacting with HubSpot's Object Schemas API
-final Client hpClient = check new Client(config, api_uri);
+final Client hpClient = check new Client(config, serviceUrl);
 
 
 @test:Config {
