@@ -121,7 +121,7 @@ Import the `hubspot.crm.obj.schemas` module and `oauth2` module.
 
 ```ballerina
 import ballerina/oauth2;
-import ballerinax/hubspot.crm.obj.schemas as schemas;
+import ballerinax/hubspot.crm.obj.schemas as hsschemas;
 ```
 
 ### Step 2: Instantiate a new connector
