@@ -38,13 +38,11 @@ public function main() returns error? {
 
     // HTTP client configuration for communicating with HubSpot API
     schemas:ConnectionConfig clientConfig = {
-        httpVersion: http:HTTP_2_0,
-        timeout: 60,
         auth: authConfig
     };
 
     // Initializing the HubSpot CRM Client with the configuration
-    final schemas:Client hubSpotClient = check new Client(clientConfig);
+    final schemas:Client hubSpotClient = check new schemas:Client(clientConfig);
 
     schemas:ObjectSchema productSearchResponse = check hubSpotClient->/[objId].get();
 
