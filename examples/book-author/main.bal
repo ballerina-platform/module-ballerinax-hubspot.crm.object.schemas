@@ -14,10 +14,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/http;
-import ballerina/io;
 import ballerina/oauth2;
 import ballerinax/hubspot.crm.obj.schemas as schemas;
+import ballerina/io;
 
 // Configurable variables for OAuth2 authentication to connect with the HubSpot API
 configurable string clientId = ?;
@@ -37,13 +36,11 @@ public function main() returns error? {
 
     // HTTP client configuration for communicating with HubSpot API
     schemas:ConnectionConfig clientConfig = {
-        httpVersion: http:HTTP_2_0,
-        timeout: 60,
         auth: authConfig
     };
 
     // Initializing the HubSpot CRM Client with the configuration
-    final schemas:Client hubSpotClient = check new Client(clientConfig);
+    final schemas:Client hubSpotClient = check new schemas:Client(clientConfig);
 
     // Define the schema for "Author" with its properties and labels
     schemas:ObjectSchemaEgg authorSchemaPayload = {
@@ -73,7 +70,7 @@ public function main() returns error? {
             plural: "Books"
         },
         primaryDisplayProperty: "book_name",
-        requiredProperties: ["book_name", "book_date"],
+        requiredProperties: ["book_name", "published_date"],
         properties: [
             {name: "book_name", label: "Book Name", "type": "string", fieldType: "text"},
             {name: "published_date", label: "Published Date", 'type: "datetime", fieldType: "date"}
@@ -89,7 +86,7 @@ public function main() returns error? {
     string? authorSchemaId = authorSchemaResponse.objectTypeId;
 
     // Check if the schema creation was successful
-    if bookSchemaId is null || authorSchemaId is null {
+    if bookSchemaId is () || authorSchemaId is () {
         return error("Failed to create schemas!");
     }
 
@@ -102,4 +99,5 @@ public function main() returns error? {
 
     // Create the association in HubSpot
     schemas:AssociationDefinition response = check hubSpotClient->/book/associations.post(payload);
+    io:print(response.name );
 }
