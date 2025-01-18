@@ -17,6 +17,7 @@
 import ballerina/http;
 import ballerina/oauth2;
 import ballerina/test;
+import ballerina/io;
 
 configurable boolean isLive = false;
 configurable string clientId = ?;
@@ -41,8 +42,19 @@ ConnectionConfig config = {
     auth: auth
 };
 
+
+
 // HubSpot CRM Client for interacting with HubSpot's Object Schemas API
 final Client hpClient = check new Client(config, api_uri);
+
+
+@test:Config {
+    groups: ["live_tests", "mock_tests"]
+}
+@test:BeforeGroups
+function beforeGroups1() {
+    io:println("I'm the before groups function!");
+}
 
 // Test: Get Schema - Fetches a list of object schemas
 @test:Config {

@@ -15,7 +15,7 @@
 // under the License.
 
 import ballerina/http;
-import ballerina/log;
+
 
 listener http:Listener httpListener = new (3000);
 
@@ -324,7 +324,10 @@ function init() returns error? {
     //     log:printInfo("Skiping mock server initialization as the tests are running on live server");
     //     return;
     // }
-    io:("Initiating mock server");
+
+
     check httpListener.attach(mockService, "/");
     check httpListener.'start();
 }
+
+
