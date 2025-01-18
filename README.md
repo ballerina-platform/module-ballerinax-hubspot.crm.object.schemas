@@ -148,7 +148,7 @@ import ballerinax/hubspot.crm.obj.schemas as hsschemas;
       credentialBearer: oauth2:POST_BODY_BEARER 
    };
 
-   final Client hpClient = check new ({auth});
+   final hsschemas:Client hpClient = check new ({auth});
    ```
 
 Now, utilize the available connector operations. A sample use case is shown below.
