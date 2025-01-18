@@ -20,9 +20,9 @@ import ballerina/test;
 import ballerina/io;
 
 configurable boolean isLive = false;
-configurable string clientId = ?;
-configurable string clientSecret = ?;
-configurable string refreshToken = ?;
+configurable string clientId = "testClientId";
+configurable string clientSecret = "testClientSecret";
+configurable string refreshToken = "testRefreshToken";
 
 string api_uri = isLive ? "" : "http://127.0.0.1:3000";
 
