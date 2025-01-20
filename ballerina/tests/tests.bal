@@ -24,7 +24,7 @@ configurable string clientId = "testClientId";
 configurable string clientSecret = "testClientSecret";
 configurable string refreshToken = "testRefreshToken";
 
-string serviceUrl = isLive ? "" : "http://127.0.0.1:3000";
+string api_uri = isLive ? "" : "http://127.0.0.1:3000";
 
 OAuth2RefreshTokenGrantConfig auth = {
     clientId,
@@ -141,7 +141,6 @@ isolated function testPatchSchema() returns error? {
     // Make PATCH request to update the schema
     ObjectTypeDefinition response = check hpClient->/[objId].patch(payload);
     test:assertNotEquals(response.updatedAt, ());
-
 }
 
 // Test: Create Schema - Creates a new assosiation
