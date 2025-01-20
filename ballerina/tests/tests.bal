@@ -133,11 +133,11 @@ isolated function testPatchSchema() returns error? {
 
 }
 
-// Test: Create Schema - Creates a new assosiation
+// Test: Create Schema - Creates a new association
 @test:Config {
     groups: ["live_tests", "mock_tests"]
 }
-isolated function testCreateAssosiation() returns error? {
+isolated function testCreateAssociation() returns error? {
 
     // Define the object schema ID to patch
     string objId = "testid2";
@@ -154,11 +154,11 @@ isolated function testCreateAssosiation() returns error? {
     test:assertNotEquals(response.id, ());
 }
 
-// Test: Delete assosiation - Deletes a specific assosiation by its ID
+// Test: Delete association - Deletes a specific association by its ID
 @test:Config {
     groups: ["live_tests", "mock_tests"]
 }
-isolated function testDeleteAssosiation() returns error? {
+isolated function testDeleteAssociation() returns error? {
     // Define the object schema ID to delete
     string objId = "testid";
     string assId = "testid";
