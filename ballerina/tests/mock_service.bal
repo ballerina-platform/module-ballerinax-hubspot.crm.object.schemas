@@ -16,9 +16,6 @@
 
 import ballerina/http;
 
-
-listener http:Listener httpListener = new (3000);
-
 http:Service mockService = service object {
 
     resource function post token() returns json {
@@ -318,16 +315,4 @@ http:Service mockService = service object {
     }
 
 };
-
-function init() returns error? {
-    // if isLiveServer {
-    //     log:printInfo("Skiping mock server initialization as the tests are running on live server");
-    //     return;
-    // }
-
-
-    check httpListener.attach(mockService, "/");
-    check httpListener.'start();
-}
-
 
