@@ -15,9 +15,9 @@
 // under the License.
 
 import ballerina/http;
+import ballerina/io;
 import ballerina/oauth2;
 import ballerina/test;
-import ballerina/io;
 
 configurable boolean isLive = false;
 configurable string clientId = "testClientId";
@@ -25,7 +25,6 @@ configurable string clientSecret = "testClientSecret";
 configurable string refreshToken = "testRefreshToken";
 
 string serviceUrl = isLive ? "" : "http://127.0.0.1:3000";
-
 
 OAuth2RefreshTokenGrantConfig auth = {
     clientId,
@@ -42,11 +41,23 @@ ConnectionConfig config = {
     auth: auth
 };
 
-
+listener http:Listener httpListener = new (3000);
 
 // HubSpot CRM Client for interacting with HubSpot's Object Schemas API
-final Client hpClient = check new Client(config, serviceUrl);
+final Client hpClient;
 
+function init() returns error? {
+    if isLive {
+        io:println("Skipping mock server initialization as the tests are running on live server");
+
+    } else {
+        io:println("Initiating mock server");
+        check httpListener.attach(mockService, "/");
+        check httpListener.'start();
+    }
+
+    hpClient = check new Client(config, api_uri);
+}
 
 @test:Config {
     groups: ["live_tests", "mock_tests"]
