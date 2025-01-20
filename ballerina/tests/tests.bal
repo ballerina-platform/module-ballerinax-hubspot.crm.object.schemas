@@ -24,7 +24,7 @@ configurable string clientId = "testClientId";
 configurable string clientSecret = "testClientSecret";
 configurable string refreshToken = "testRefreshToken";
 
-string api_uri = isLive ? "" : "http://127.0.0.1:3000";
+string serviceUrl = isLive ? "https://api.hubapi.com/crm-object-schemas/v3/schemas" : "http://127.0.0.1:3000";
 
 OAuth2RefreshTokenGrantConfig auth = {
     clientId,
@@ -56,7 +56,7 @@ function init() returns error? {
         check httpListener.'start();
     }
 
-    hpClient = check new Client(config, api_uri);
+    hpClient = check new Client(config, serviceUrl);
 }
 
 @test:Config {
