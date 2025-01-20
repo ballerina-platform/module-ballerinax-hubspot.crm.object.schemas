@@ -98,6 +98,9 @@ dependencies = [
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "lang.value"}
 ]
+modules = [
+	{org = "ballerina", packageName = "io", moduleName = "io"}
+]
 
 [[package]]
 org = "ballerina"
@@ -212,9 +215,6 @@ dependencies = [
 	{org = "ballerina", name = "lang.value"},
 	{org = "ballerina", name = "observe"}
 ]
-modules = [
-	{org = "ballerina", packageName = "log", moduleName = "log"}
-]
 
 [[package]]
 org = "ballerina"
@@ -320,7 +320,7 @@ name = "hubspot.crm.obj.schemas"
 version = "1.0.0"
 dependencies = [
 	{org = "ballerina", name = "http"},
-	{org = "ballerina", name = "log"},
+	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "oauth2"},
 	{org = "ballerina", name = "test"},
 	{org = "ballerina", name = "url"},
