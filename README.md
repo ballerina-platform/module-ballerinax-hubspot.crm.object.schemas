@@ -121,7 +121,7 @@ Import the `hubspot.crm.obj.schemas` module and `oauth2` module.
 
 ```ballerina
 import ballerina/oauth2;
-import ballerinax/hubspot.crm.obj.schemas as schemas;
+import ballerinax/hubspot.crm.obj.schemas as hsschemas;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -148,7 +148,7 @@ import ballerinax/hubspot.crm.obj.schemas as schemas;
       credentialBearer: oauth2:POST_BODY_BEARER 
    };
 
-   final Client hpClient = check new ({auth});
+   final hsschemas:Client hpClient = check new ({auth});
    ```
 
 Now, utilize the available connector operations. A sample use case is shown below.

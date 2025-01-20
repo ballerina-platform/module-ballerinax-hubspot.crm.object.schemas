@@ -24,7 +24,7 @@ configurable string clientId = "testClientId";
 configurable string clientSecret = "testClientSecret";
 configurable string refreshToken = "testRefreshToken";
 
-string api_uri = isLive ? "" : "http://127.0.0.1:3000";
+string serviceUrl = isLive ? "" : "http://127.0.0.1:3000";
 
 OAuth2RefreshTokenGrantConfig auth = {
     clientId,
