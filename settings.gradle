@@ -27,11 +27,11 @@ plugins {
     id "com.gradle.enterprise" version "3.2"
 }
 
-rootProject.name = 'module-ballerinax-hubspot.crm.object.schemas'
+rootProject.name = 'module-ballerinax-hubspot.crm.obj.schemas'
 
-include ':hubspot.crm.object.schemas-ballerina'
+include ':hubspot.crm.obj.schemas-ballerina'
 
-project(':hubspot.crm.object.schemas-ballerina').projectDir = file("ballerina")
+project(':hubspot.crm.obj.schemas-ballerina').projectDir = file("ballerina")
 
 gradleEnterprise {
     buildScan {
