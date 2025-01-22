@@ -8,9 +8,9 @@
 
 ## Overview
 
-[HubSpot](https://www.hubspot.com) is an AI-powered customer relationship management (CRM) platform. 
+[HubSpot](https://www.hubspot.com) is an AI-powered customer relationship management (CRM) platform.
 
-The `ballerinax/hubspot.crm.object.schemas` offers APIs to connect and interact with the [HubSpot Schemas API](https://developers.hubspot.com/docs/guides/api/crm/objects/schemas) endpoints, specifically based on the [HubSpot REST API](https://developers.hubspot.com/docs/reference/api).
+The `ballerinax/hubspot.crm.obj.schemas` offers APIs to connect and interact with the [HubSpot Schemas API](https://developers.hubspot.com/docs/guides/api/crm/objects/schemas) endpoints, specifically based on the [HubSpot REST API](https://developers.hubspot.com/docs/reference/api).
 
 ## Setup guide
 
@@ -145,7 +145,7 @@ import ballerinax/hubspot.crm.obj.schemas as hsschemas;
       clientId,
       clientSecret,
       refreshToken,
-      credentialBearer: oauth2:POST_BODY_BEARER 
+      credentialBearer: oauth2:POST_BODY_BEARER
    };
 
    final hsschemas:Client hpClient = check new ({auth});
@@ -166,7 +166,7 @@ public function main() returns error? {
 ## Examples
 
 The `HubSpot CRM Object Schemas` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.schemas/tree/main/examples), covering the following use cases:
-   1. [Auther and Book assosiation](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/book-author)
+   1. [Auther and Book assosiation](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/book-author-association-association-association-association-association)
    2. [Product spec update](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/product-update)
 
 ## Build from the source
@@ -257,7 +257,7 @@ All the contributors are encouraged to read the [Ballerina Code of Conduct](http
 
 ## Useful links
 
-* For more information go to the [`hubspot.crm.object.schemas` package](https://central.ballerina.io/ballerinax/hubspot.crm.object.schemas/latest).
+* For more information go to the [`hubspot.crm.object.schemas` package](https://central.ballerina.io/ballerinax/hubspot.crm.obj.schemas/latest).
 * For example demonstrations of the usage, go to [Ballerina By Examples](https://ballerina.io/learn/by-example/).
 * Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
 * Post all technical questions on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.

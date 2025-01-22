@@ -1,8 +1,8 @@
 ## Overview
 
-[HubSpot](https://www.hubspot.com) is an AI-powered customer relationship management (CRM) platform. 
+[HubSpot](https://www.hubspot.com) is an AI-powered customer relationship management (CRM) platform.
 
-The `ballerinax/hubspot.crm.object.schemas` offers APIs to connect and interact with the [HubSpot Schemas API](https://developers.hubspot.com/docs/guides/api/crm/objects/schemas) endpoints, specifically based on the [HubSpot REST API](https://developers.hubspot.com/docs/reference/api).
+The `ballerinax/hubspot.crm.obj.schemas` offers APIs to connect and interact with the [HubSpot Schemas API](https://developers.hubspot.com/docs/guides/api/crm/objects/schemas) endpoints, specifically based on the [HubSpot REST API](https://developers.hubspot.com/docs/reference/api).
 
 ## Setup guide
 
@@ -26,14 +26,14 @@ App Developer Accounts, allow you to create developer test accounts to test apps
 
    ![Hubspot developer account name](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/main/docs/setup/resources/test_acc_img3.png)
 
-### Step 2: Create a HubSpot App under your account.
+### Step 2: Create a HubSpot App under your account
 
 1. In your developer account, navigate to the "Apps" section. Click on "Create App".
    ![Hubspot App Creation](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/main/docs/setup/resources/app_img1.png)
 
 2. Provide the necessary details, including the app name and description.
 
-### Step 3: Configure the Authentication Flow.
+### Step 3: Configure the Authentication Flow
 
 1. Move to the Auth Tab.
 
@@ -70,7 +70,7 @@ Before proceeding with the Quickstart, ensure you have obtained the Access Token
 
 3. A code will be displayed in the browser. Copy that code.
 
-4. Run the following curl command. Replace the `<YOUR_CLIENT_ID>`, `<YOUR_REDIRECT_URI`> and `<YOUR_CLIENT_SECRET>` with your specific value. Use the code you received in the above step 3 as the `<CODE>`.
+4. Run the following curl command. Replace the `<YOUR_CLIENT_ID>`, `<YOUR_REDIRECT_URI>`, and `<YOUR_CLIENT_SECRET>` with your specific value. Use the code you received in the above step 3 as the `<CODE>`.
 
    - Linux/macOS
 
@@ -137,7 +137,7 @@ import ballerinax/hubspot.crm.obj.schemas as hsschemas;
       clientId,
       clientSecret,
       refreshToken,
-      credentialBearer: oauth2:POST_BODY_BEARER 
+      credentialBearer: oauth2:POST_BODY_BEARER
    };
 
    final hsschemas:Client hpClient = check new ({auth});
@@ -153,10 +153,11 @@ public function main() returns error? {
 
     io:println(response);
 }
-
 ```
+
 ## Examples
 
 The `HubSpot CRM Object Schemas` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.schemas/tree/main/examples), covering the following use cases:
-   1. [Auther and Book assosiation](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/book-author)
+
+   1. [Author and Book association](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/book-author)
    2. [Product spec update](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/product-update)

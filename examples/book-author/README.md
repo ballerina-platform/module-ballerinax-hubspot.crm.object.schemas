@@ -1,16 +1,16 @@
 # Ballerina HubSpot CRM Object Schemas connector
 
-This use case demonstrates how the `hubspot.crm.object.schemas` API can be utilized to create and update a schema for a product. First a schema is created to represent a product. Then the Update endpoint is used to update the existing schema with new properties.
+This use case demonstrates how the `ballerinax/hubspot.crm.obj.schemas` connector can be utilized to create and update a schema for a product. First a schema is created to represent a product. Then the Update endpoint is used to update the existing schema with new properties.
 
 ## Prerequisites
 
-### 1. Setup the Hubspot developer account
+### 1. Setup the HubSpot developer account
 
 Refer to the [Setup guide](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas/tree/main/examples/README.md#setup-guide) to obtain necessary credentials (client Id, client secret, Refresh tokens).
 
 ### 2. Configuration
 
-Create a `Config.toml` file in the example's root directory and, provide your Hubspot account related configurations as follows:
+Create a `Config.toml` file in the example's root directory and, provide your HubSpot account related configurations as follows:
 
 ```toml
 clientId = "<Client ID>"
