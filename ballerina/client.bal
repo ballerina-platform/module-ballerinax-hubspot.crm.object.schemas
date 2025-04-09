@@ -23,6 +23,7 @@ import ballerina/http;
 public isolated client class Client {
     final http:Client clientEp;
     final readonly & ApiKeysConfig? apiKeyConfig;
+
     # Gets invoked to initialize the `connector`.
     #
     # + config - The configurations to be used when initializing the `connector` 
@@ -39,8 +40,8 @@ public isolated client class Client {
         self.clientEp = check new (serviceUrl, httpClientConfig);
     }
 
-    resource isolated function get crm\-object\-schemas/v3/schemas(map<string|string[]> headers = {}, *GetCrmObjectSchemasV3SchemasGetAllQueries queries) returns CollectionResponseObjectSchemaNoPaging|error {
-        string resourcePath = string `/crm-object-schemas/v3/schemas`;
+    resource isolated function get .(map<string|string[]> headers = {}, *GetCrmObjectSchemasV3SchemasGetAllQueries queries) returns CollectionResponseObjectSchemaNoPaging|error {
+        string resourcePath = string `/`;
         map<anydata> headerValues = {...headers};
         if self.apiKeyConfig is ApiKeysConfig {
             headerValues["private-app-legacy"] = self.apiKeyConfig?.privateAppLegacy;
@@ -50,8 +51,8 @@ public isolated client class Client {
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
-    resource isolated function post crm\-object\-schemas/v3/schemas(ObjectSchemaEgg payload, map<string|string[]> headers = {}) returns ObjectSchema|error {
-        string resourcePath = string `/crm-object-schemas/v3/schemas`;
+    resource isolated function post .(ObjectSchemaEgg payload, map<string|string[]> headers = {}) returns ObjectSchema|error {
+        string resourcePath = string `/`;
         map<anydata> headerValues = {...headers};
         if self.apiKeyConfig is ApiKeysConfig {
             headerValues["private-app-legacy"] = self.apiKeyConfig?.privateAppLegacy;
@@ -63,8 +64,8 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, httpHeaders);
     }
 
-    resource isolated function get crm\-object\-schemas/v3/schemas/[string objectType](map<string|string[]> headers = {}) returns ObjectSchema|error {
-        string resourcePath = string `/crm-object-schemas/v3/schemas/${getEncodedUri(objectType)}`;
+    resource isolated function get [string objectType](map<string|string[]> headers = {}) returns ObjectSchema|error {
+        string resourcePath = string `/${getEncodedUri(objectType)}`;
         map<anydata> headerValues = {...headers};
         if self.apiKeyConfig is ApiKeysConfig {
             headerValues["private-app-legacy"] = self.apiKeyConfig?.privateAppLegacy;
@@ -73,8 +74,8 @@ public isolated client class Client {
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
-    resource isolated function delete crm\-object\-schemas/v3/schemas/[string objectType](map<string|string[]> headers = {}, *DeleteCrmObjectSchemasV3SchemasObjectTypeArchiveQueries queries) returns error? {
-        string resourcePath = string `/crm-object-schemas/v3/schemas/${getEncodedUri(objectType)}`;
+    resource isolated function delete [string objectType](map<string|string[]> headers = {}, *DeleteCrmObjectSchemasV3SchemasObjectTypeArchiveQueries queries) returns error? {
+        string resourcePath = string `/${getEncodedUri(objectType)}`;
         map<anydata> headerValues = {...headers};
         if self.apiKeyConfig is ApiKeysConfig {
             headerValues["private-app-legacy"] = self.apiKeyConfig?.privateAppLegacy;
@@ -84,8 +85,8 @@ public isolated client class Client {
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
     }
 
-    resource isolated function patch crm\-object\-schemas/v3/schemas/[string objectType](ObjectTypeDefinitionPatch payload, map<string|string[]> headers = {}) returns ObjectTypeDefinition|error {
-        string resourcePath = string `/crm-object-schemas/v3/schemas/${getEncodedUri(objectType)}`;
+    resource isolated function patch [string objectType](ObjectTypeDefinitionPatch payload, map<string|string[]> headers = {}) returns ObjectTypeDefinition|error {
+        string resourcePath = string `/${getEncodedUri(objectType)}`;
         map<anydata> headerValues = {...headers};
         if self.apiKeyConfig is ApiKeysConfig {
             headerValues["private-app-legacy"] = self.apiKeyConfig?.privateAppLegacy;
@@ -97,8 +98,8 @@ public isolated client class Client {
         return self.clientEp->patch(resourcePath, request, httpHeaders);
     }
 
-    resource isolated function post crm\-object\-schemas/v3/schemas/[string objectType]/associations(AssociationDefinitionEgg payload, map<string|string[]> headers = {}) returns AssociationDefinition|error {
-        string resourcePath = string `/crm-object-schemas/v3/schemas/${getEncodedUri(objectType)}/associations`;
+    resource isolated function post [string objectType]/associations(AssociationDefinitionEgg payload, map<string|string[]> headers = {}) returns AssociationDefinition|error {
+        string resourcePath = string `/${getEncodedUri(objectType)}/associations`;
         map<anydata> headerValues = {...headers};
         if self.apiKeyConfig is ApiKeysConfig {
             headerValues["private-app-legacy"] = self.apiKeyConfig?.privateAppLegacy;
@@ -110,8 +111,8 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, httpHeaders);
     }
 
-    resource isolated function delete crm\-object\-schemas/v3/schemas/[string objectType]/associations/[string associationIdentifier](map<string|string[]> headers = {}) returns error? {
-        string resourcePath = string `/crm-object-schemas/v3/schemas/${getEncodedUri(objectType)}/associations/${getEncodedUri(associationIdentifier)}`;
+    resource isolated function delete [string objectType]/associations/[string associationIdentifier](map<string|string[]> headers = {}) returns error? {
+        string resourcePath = string `/${getEncodedUri(objectType)}/associations/${getEncodedUri(associationIdentifier)}`;
         map<anydata> headerValues = {...headers};
         if self.apiKeyConfig is ApiKeysConfig {
             headerValues["private-app-legacy"] = self.apiKeyConfig?.privateAppLegacy;

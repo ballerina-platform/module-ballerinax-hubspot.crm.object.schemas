@@ -19,13 +19,13 @@
     "x-hubspot-introduction" : "Use the custom objects schema API to define new types of CRM records in your account. After setting up an object schema, you'll then be able to create custom records under that object both in HubSpot and using the custom object records API."
   },
   "servers" : [ {
-    "url" : "https://api.hubapi.com"
+    "url" : "https://api.hubapi.com/crm-object-schemas/v3/schemas"
   } ],
   "tags" : [ {
     "name" : "Core"
   } ],
   "paths" : {
-    "/crm-object-schemas/v3/schemas" : {
+    "/" : {
       "get" : {
         "tags" : [ "Core" ],
         "summary" : "Get all schemas",
@@ -105,7 +105,7 @@
         } ]
       }
     },
-    "/crm-object-schemas/v3/schemas/{objectType}" : {
+    "/{objectType}" : {
       "get" : {
         "tags" : [ "Core" ],
         "summary" : "Get an existing schema",
@@ -234,7 +234,7 @@
         } ]
       }
     },
-    "/crm-object-schemas/v3/schemas/{objectType}/associations" : {
+    "/{objectType}/associations" : {
       "post" : {
         "tags" : [ "Core" ],
         "summary" : "Create an association",
@@ -282,7 +282,7 @@
         } ]
       }
     },
-    "/crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}" : {
+    "/{objectType}/associations/{associationIdentifier}" : {
       "delete" : {
         "tags" : [ "Core" ],
         "summary" : "Remove an association",
