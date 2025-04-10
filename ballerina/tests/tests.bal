@@ -112,8 +112,8 @@ isolated function testDeleteSchema() returns error? {
     string objId = "testid";
 
     // Make DELETE request to delete the schema
-    http:Response response = check hpClient->/[objId].delete();
-    test:assertEquals(response.statusCode, 204);
+    error? response = check hpClient->/[objId].delete();
+    test:assertEquals(response, ());
 }
 
 // Test: Update Schema - Updates an existing schema by ID
@@ -174,6 +174,6 @@ isolated function testDeleteAssosiation() returns error? {
     string assId = "testid";
 
     // Make DELETE request to delete the schema
-    http:Response response = check hpClient->/[objId]/associations/[assId].delete();
-    test:assertEquals(response.statusCode, 204);
+    error? response = check hpClient->/[objId]/associations/[assId].delete();
+    test:assertEquals(response, ());
 }
