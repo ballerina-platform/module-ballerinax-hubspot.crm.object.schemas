@@ -17,19 +17,19 @@
 // specific language governing permissions and limitations
 // under the License.
 
+import ballerina/data.jsondata;
 import ballerina/http;
 
 # The CRM uses schemas to define how custom objects should store and represent information in the HubSpot CRM. Schemas define details about an object's type, properties, and associations. The schema can be uniquely identified by its **object type ID**.
 public isolated client class Client {
     final http:Client clientEp;
     final readonly & ApiKeysConfig? apiKeyConfig;
-
     # Gets invoked to initialize the `connector`.
     #
     # + config - The configurations to be used when initializing the `connector` 
     # + serviceUrl - URL of the target service 
     # + return - An error if connector initialization failed 
-    public isolated function init(ConnectionConfig config, string serviceUrl = "https://api.hubapi.com") returns error? {
+    public isolated function init(ConnectionConfig config, string serviceUrl = "https://api.hubapi.com/crm-object-schemas/v3/schemas") returns error? {
         http:ClientConfiguration httpClientConfig = {httpVersion: config.httpVersion, http1Settings: config.http1Settings, http2Settings: config.http2Settings, timeout: config.timeout, forwarded: config.forwarded, followRedirects: config.followRedirects, poolConfig: config.poolConfig, cache: config.cache, compression: config.compression, circuitBreaker: config.circuitBreaker, retryConfig: config.retryConfig, cookieConfig: config.cookieConfig, responseLimits: config.responseLimits, secureSocket: config.secureSocket, proxy: config.proxy, socketConfig: config.socketConfig, validation: config.validation, laxDataBinding: config.laxDataBinding};
         if config.auth is ApiKeysConfig {
             self.apiKeyConfig = (<ApiKeysConfig>config.auth).cloneReadOnly();
@@ -40,6 +40,11 @@ public isolated client class Client {
         self.clientEp = check new (serviceUrl, httpClientConfig);
     }
 
+    # Get all schemas
+    #
+    # + headers - Headers to be sent with the request 
+    # + queries - Queries to be sent with the request 
+    # + return - successful operation 
     resource isolated function get .(map<string|string[]> headers = {}, *GetCrmObjectSchemasV3SchemasGetAllQueries queries) returns CollectionResponseObjectSchemaNoPaging|error {
         string resourcePath = string `/`;
         map<anydata> headerValues = {...headers};
@@ -51,6 +56,11 @@ public isolated client class Client {
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
+    # Create a new schema
+    #
+    # + headers - Headers to be sent with the request 
+    # + payload - Object schema definition, including properties and associations 
+    # + return - successful operation 
     resource isolated function post .(ObjectSchemaEgg payload, map<string|string[]> headers = {}) returns ObjectSchema|error {
         string resourcePath = string `/`;
         map<anydata> headerValues = {...headers};
@@ -59,11 +69,16 @@ public isolated client class Client {
         }
         map<string|string[]> httpHeaders = http:getHeaderMap(headerValues);
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, httpHeaders);
     }
 
+    # Get an existing schema
+    #
+    # + objectType - Fully qualified name or object type ID of your schema
+    # + headers - Headers to be sent with the request 
+    # + return - successful operation 
     resource isolated function get [string objectType](map<string|string[]> headers = {}) returns ObjectSchema|error {
         string resourcePath = string `/${getEncodedUri(objectType)}`;
         map<anydata> headerValues = {...headers};
@@ -74,6 +89,12 @@ public isolated client class Client {
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
+    # Delete a schema
+    #
+    # + objectType - Fully qualified name or object type ID of your schema
+    # + headers - Headers to be sent with the request 
+    # + queries - Queries to be sent with the request 
+    # + return - No content 
     resource isolated function delete [string objectType](map<string|string[]> headers = {}, *DeleteCrmObjectSchemasV3SchemasObjectTypeArchiveQueries queries) returns error? {
         string resourcePath = string `/${getEncodedUri(objectType)}`;
         map<anydata> headerValues = {...headers};
@@ -85,6 +106,12 @@ public isolated client class Client {
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
     }
 
+    # Update a schema
+    #
+    # + objectType - Fully qualified name or object type ID of your schema
+    # + headers - Headers to be sent with the request 
+    # + payload - Attributes to update in your schema 
+    # + return - successful operation 
     resource isolated function patch [string objectType](ObjectTypeDefinitionPatch payload, map<string|string[]> headers = {}) returns ObjectTypeDefinition|error {
         string resourcePath = string `/${getEncodedUri(objectType)}`;
         map<anydata> headerValues = {...headers};
@@ -93,11 +120,17 @@ public isolated client class Client {
         }
         map<string|string[]> httpHeaders = http:getHeaderMap(headerValues);
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->patch(resourcePath, request, httpHeaders);
     }
 
+    # Create an association
+    #
+    # + objectType - Fully qualified name or object type ID of your schema
+    # + headers - Headers to be sent with the request 
+    # + payload - Attributes that define the association 
+    # + return - successful operation 
     resource isolated function post [string objectType]/associations(AssociationDefinitionEgg payload, map<string|string[]> headers = {}) returns AssociationDefinition|error {
         string resourcePath = string `/${getEncodedUri(objectType)}/associations`;
         map<anydata> headerValues = {...headers};
@@ -106,11 +139,17 @@ public isolated client class Client {
         }
         map<string|string[]> httpHeaders = http:getHeaderMap(headerValues);
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, httpHeaders);
     }
 
+    # Remove an association
+    #
+    # + objectType - Fully qualified name or object type ID of your schema
+    # + associationIdentifier - Unique ID of the association to remove
+    # + headers - Headers to be sent with the request 
+    # + return - No content 
     resource isolated function delete [string objectType]/associations/[string associationIdentifier](map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(objectType)}/associations/${getEncodedUri(associationIdentifier)}`;
         map<anydata> headerValues = {...headers};
