@@ -32,6 +32,7 @@ public type ObjectTypeDefinitionPatch record {
     string primaryDisplayProperty?;
     string description?;
     boolean restorable?;
+    # Singular and plural labels for the object. Used in CRM display
     ObjectTypeDefinitionLabels labels?;
 };
 
@@ -46,6 +47,7 @@ public type ObjectTypeDefinition record {
     string objectTypeId?;
     string description?;
     string fullyQualifiedName?;
+    # Singular and plural labels for the object. Used in CRM display
     ObjectTypeDefinitionLabels labels;
     boolean archived?;
     # When the object type was created
@@ -93,13 +95,9 @@ public type GetCrmObjectSchemasV3SchemasGetAllQueries record {
 };
 
 public type PropertyModificationMetadata record {
-    # 
     boolean readOnlyOptions?;
-    # 
     boolean readOnlyValue;
-    # 
     boolean readOnlyDefinition;
-    # 
     boolean archivable;
 };
 
@@ -178,6 +176,7 @@ public type ObjectSchema record {
     int:Signed32 updatedByUserId?;
     # An assigned unique ID for the object, including portal ID and object name
     string fullyQualifiedName?;
+    # Singular and plural labels for the object. Used in CRM display
     ObjectTypeDefinitionLabels labels;
     boolean archived?;
     # When the object schema was created
@@ -244,6 +243,7 @@ public type ObjectSchemaEgg record {
     string[] associatedObjects;
     # Properties defined for this object type
     ObjectTypePropertyCreate[] properties;
+    # Singular and plural labels for the object. Used in CRM display
     ObjectTypeDefinitionLabels labels;
 };
 
@@ -272,7 +272,6 @@ public type Property record {
     boolean calculated?;
     # For default properties, true indicates that the options are stored externally to the property settings
     boolean externalOptions?;
-    # 
     string updatedAt?;
     # The internal ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot
     string createdUserId?;
