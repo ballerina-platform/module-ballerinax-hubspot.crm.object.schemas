@@ -5,7 +5,7 @@ name = "hubspot.crm.obj.schemas"
 version = "@toml.version@"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
-keywords = ["schema", "hubspot", "object"]
+keywords = ["schema", "object", "Vendor/HubSpot", "Area/CRM", "Type/Connector"]
 repository = "https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.schemas"
 
 [build-options]
