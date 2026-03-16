@@ -2,7 +2,14 @@
 
 [HubSpot](https://www.hubspot.com) is an AI-powered customer relationship management (CRM) platform.
 
-The `ballerinax/hubspot.crm.obj.schemas` offers APIs to connect and interact with the [HubSpot Schemas API](https://developers.hubspot.com/docs/guides/api/crm/objects/schemas) endpoints, specifically based on the [HubSpot REST API](https://developers.hubspot.com/docs/reference/api).
+The HubSpot CRM Object Schemas connector provides APIs to connect and interact with the [HubSpot Schemas API](https://developers.hubspot.com/docs/guides/api/crm/objects/schemas) endpoints, specifically based on the [HubSpot REST API](https://developers.hubspot.com/docs/reference/api).
+
+### Key Features
+
+- Create, read, update, and delete custom object schemas in HubSpot CRM
+- Define custom properties and associations for object types
+- Retrieve all existing schemas in a HubSpot account
+- Manage object type definitions and their relationships
 
 ## Setup guide
 
